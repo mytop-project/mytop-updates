@@ -5,10 +5,10 @@ Shared code for droidtop, Pythia, Enginehost and droidtop-agent: release lanes, 
 One of the shared libraries of Droidtop/tracker#867, in the split the owner approved on 2026-11-21
 (Droidtop/tracker#960, step 1.0). Where its code comes from: new.
 
-**Shared code, never built on its own** (owner, 2026-11-21: "these libraries aren't standalone. There's no reason
-to build them at all. They're shared code"). This repository holds the source. It is compiled, tested and shipped only
-inside the programs that pin it, by commit, and each program's CI is where a change here is checked. There is no build
-pipeline, release build or platform target here.
+**Shared code with versions, not releases** (owner, 2026-11-21: "these libraries aren't standalone… They're shared
+code", then "we still make pinned versions, we just don't make releases. We can build them for testing and stuff, we
+wanna be able to use versioning"). Programs pin a version tag (vX.Y.Z). CI here builds and tests the library and
+builds the programs that pin it against each change; it publishes no releases or release builds.
 
 - **Platform-neutral:** no Android-only code; an Android adapter, where one is needed, is a separate, marked module.
   The programs also target mobile Linux.
